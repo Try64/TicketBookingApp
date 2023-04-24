@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import bd.com.shurjomukhi.v2.model.PaymentReq
 import bd.com.shurjomukhi.v2.model.ShurjopayConfigs
@@ -48,47 +49,50 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
         )
 
         fun pay() {
-
-            val payo = binding.tvPrice.text.toString().split(" ")
-
-
-            val data = PaymentReq(
-                "sp",
-                1.toDouble(),
-                "NOK" + Random().nextInt(1000000),
-                "BDT",
-                "Abu Zafar Newton",
-                customerAddress = "shurjoMukhi HQ",
-                customerPhone = "01766767677",
-                customerCity = "Dhaka",
-                "1200",
-                "msiazn@gmail.com",
-            )
+            if(binding.tvPrice.text.toString().trim().isEmpty() || binding.tvPrice.text.toString().trim() == "0"){
+                Toast.makeText(this,"Please select at least one person", Toast.LENGTH_LONG).show()
+            }else{
+                val payo = binding.tvPrice.text.toString().split(" ")
 
 
-            shurjopay?.makePayment(
-                this,
-                data,
-                object : PaymentResultListener {
-                    override fun onSuccess(success: ShurjopaySuccess) {
-                        Log.d("sPay", "onSuccess: debugMessage = ${success.debugMessage}")
-                        showSuccessfulDialog {
-                            val intee = Intent(this@DetailsRiverCruiseActivity,HomeActivity::class.java)
-                            intee.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intee)
+                val data = PaymentReq(
+                    "sp",
+                    1.toDouble(),
+                    "NOK" + Random().nextInt(1000000),
+                    "BDT",
+                    "Abu Zafar Newton",
+                    customerAddress = "shurjoMukhi HQ",
+                    customerPhone = "01766767677",
+                    customerCity = "Dhaka",
+                    "1200",
+                    "msiazn@gmail.com",
+                )
+
+
+                shurjopay?.makePayment(
+                    this,
+                    data,
+                    object : PaymentResultListener {
+                        override fun onSuccess(success: ShurjopaySuccess) {
+                            Log.d("sPay", "onSuccess: debugMessage = ${success.debugMessage}")
+                            showSuccessfulDialog {
+                                val intee = Intent(this@DetailsRiverCruiseActivity,HomeActivity::class.java)
+                                intee.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intee)
+                            }
                         }
-                    }
 
-                    override fun onFailed(exception: ShurjopayException) {
-                        Log.d("sPay", "onFailed: debugMessage = ${exception.debugMessage}")
-                    }
+                        override fun onFailed(exception: ShurjopayException) {
+                            Log.d("sPay", "onFailed: debugMessage = ${exception.debugMessage}")
+                        }
 
-                    override fun onBackButtonListener(exception: ShurjopayException): Boolean {
-                        Log.d("sPay", "onBackButton: debugMessage = ${exception.debugMessage}")
-                        return true
-                    }
+                        override fun onBackButtonListener(exception: ShurjopayException): Boolean {
+                            Log.d("sPay", "onBackButton: debugMessage = ${exception.debugMessage}")
+                            return true
+                        }
 
-                })
+                    })
+            }
 
         }
 
