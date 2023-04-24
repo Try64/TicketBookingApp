@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/booking_app_navigation"
+    app:startDestination="@id/myAccountFragment">
+
+    <fragment
+        android:id="@+id/myAccountFragment"
+        android:name="com.sm.ticketbookingapp.MyAccountFragment"
+        android:label="fragment_my_account"
+        tools:layout="@layout/fragment_my_account" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.sm.ticketbookingapp.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/FAQFragment"
+        android:name="com.sm.ticketbookingapp.FAQFragment"
+        android:label="fragment_f_a_q"
+        tools:layout="@layout/fragment_f_a_q" />
+    <fragment
+        android:id="@+id/refundPolicyFragment"
+        android:name="com.sm.ticketbookingapp.RefundPolicyFragment"
+        android:label="fragment_refund_policy"
+        tools:layout="@layout/fragment_refund_policy" />
+    <fragment
+        android:id="@+id/TCFragment"
+        android:name="com.sm.ticketbookingapp.TCFragment"
+        android:label="fragment_t_c"
+        tools:layout="@layout/fragment_t_c" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.sm.ticketbookingapp.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+</navigation>
