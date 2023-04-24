@@ -1,18 +1,35 @@
 package com.sm.ticketbookingapp
 
+import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.widget.PopupMenu
+import bd.com.shurjomukhi.v2.model.PaymentReq
+import bd.com.shurjomukhi.v2.model.ShurjopayConfigs
+import bd.com.shurjomukhi.v2.model.ShurjopayException
+import bd.com.shurjomukhi.v2.model.ShurjopaySuccess
+import bd.com.shurjomukhi.v2.payment.PaymentResultListener
+import bd.com.shurjomukhi.v2.payment.Shurjopay
 import com.sm.ticketbookingapp.databinding.ActivityDetailsRiverCruiseBinding
+import com.sm.ticketbookingapp.databinding.CongratulationsDialogBinding
+import com.sm.ticketbookingapp.util.Util.Companion.SP_BASE_URL
+import com.sm.ticketbookingapp.util.Util.Companion.SP_PASSWORD
+import com.sm.ticketbookingapp.util.Util.Companion.SP_USER
+import java.util.Random
 
 class DetailsRiverCruiseActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailsRiverCruiseBinding
     private var title = ""
     private var duration = ""
     private var price = ""
+
+    var shurjopay: Shurjopay? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsRiverCruiseBinding.inflate(layoutInflater)
@@ -22,9 +39,68 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
         duration = intent?.getStringExtra("duration").toString()
         price = intent?.getStringExtra("price").toString()
 
+        shurjopay = Shurjopay(
+            ShurjopayConfigs(
+                username = SP_USER,
+                password = SP_PASSWORD,
+                baseUrl = SP_BASE_URL
+            )
+        )
+
+        fun pay() {
+
+            val payo = binding.tvPrice.text.toString().split(" ")
+
+
+            val data = PaymentReq(
+                "sp",
+                1.toDouble(),
+                "NOK" + Random().nextInt(1000000),
+                "BDT",
+                "Abu Zafar Newton",
+                customerAddress = "shurjoMukhi HQ",
+                customerPhone = "01766767677",
+                customerCity = "Dhaka",
+                "1200",
+                "msiazn@gmail.com",
+            )
+
+
+            shurjopay?.makePayment(
+                this,
+                data,
+                object : PaymentResultListener {
+                    override fun onSuccess(success: ShurjopaySuccess) {
+                        Log.d("sPay", "onSuccess: debugMessage = ${success.debugMessage}")
+                        showSuccessfulDialog {
+                            val intee = Intent(this@DetailsRiverCruiseActivity,HomeActivity::class.java)
+                            intee.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intee)
+                        }
+                    }
+
+                    override fun onFailed(exception: ShurjopayException) {
+                        Log.d("sPay", "onFailed: debugMessage = ${exception.debugMessage}")
+                    }
+
+                    override fun onBackButtonListener(exception: ShurjopayException): Boolean {
+                        Log.d("sPay", "onBackButton: debugMessage = ${exception.debugMessage}")
+                        return true
+                    }
+
+                })
+
+        }
+
+
+
         binding.apply {
             backButton.setOnClickListener {
                 finish()
+            }
+
+            button.setOnClickListener{
+                pay()
             }
 
             etAdult.addTextChangedListener(object :TextWatcher{
@@ -59,13 +135,23 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
                     }else{
                         dr.text = "No"
                     }
-                    // Toast message on menu item clicked
-                    //Toast.makeText(this@DetailsRiverCruiseActivity, "You Clicked " + menuItem.title, Toast.LENGTH_SHORT).show()
                     true
                 }
                 // Showing the popup menu
                 popupMenu.show()
             }
         }
+    }
+    private fun showSuccessfulDialog(onOkClick: () -> Unit) {
+        val dialog = Dialog(this)
+        val binding = CongratulationsDialogBinding.inflate(this.layoutInflater)
+        binding.tvMessage.text = "Payment for your trip Successfully. You will be notified soon."
+        dialog.setContentView(binding.root)
+        dialog.setCancelable(false)
+        binding.btnOk.setOnClickListener {
+            dialog.dismiss()
+            onOkClick()
+        }
+        dialog.show()
     }
 }

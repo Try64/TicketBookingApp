@@ -228,6 +228,7 @@
                 android:id="@+id/etAdult"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
                 android:layout_width="0dp"
+                android:maxLength="4"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
                 android:inputType="numberSigned"
@@ -253,6 +254,7 @@
                 android:id="@+id/etChild"
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
                 android:layout_width="0dp"
+                android:maxLength="4"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
                 android:inputType="numberSigned"
@@ -308,6 +310,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="0 BDT" />
 
