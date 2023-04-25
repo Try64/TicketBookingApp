@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dhaka"
+        android:title="Dhaka" />
+
+    <item
+        android:id="@+id/chat"
+        android:title="Chattagram" />
+
+
+    <item
+        android:id="@+id/kum"
+        android:title="Cumilla" />
+
+    <item
+        android:id="@+id/ran"
+        android:title="Rangpur" />
+    <item
+        android:id="@+id/khu"
+        android:title="Khulna" />
+    <item
+        android:id="@+id/bar"
+        android:title="Barisal" />
+    <item
+        android:id="@+id/syl"
+        android:title="Sylhet" />
+
+
+
+</menu>

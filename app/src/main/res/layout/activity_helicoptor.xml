@@ -88,7 +88,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="Date of Trip" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="Trip Starting Time" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="From Which Helipad" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -157,7 +157,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="Desired Helipad Destination" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="One way / Round Trip" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,7 +226,7 @@
                 android:layout_height="46dp"
                 android:layout_weight="0.65"
                 android:gravity="center"
-                android:hint="Y/N" />
+                android:hint="Yes / No" />
         </LinearLayout>
 
     </LinearLayout>
