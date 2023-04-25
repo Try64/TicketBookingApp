@@ -49,7 +49,7 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
         )
 
         fun pay() {
-            if(binding.tvPrice.text.toString().trim().isEmpty() || binding.tvPrice.text.toString().trim() == "0"){
+            if(binding.tvPrice.text.toString().trim().isEmpty() || binding.tvPrice.text.toString().trim() == "0 BDT"){
                 Toast.makeText(this,"Please select at least one person", Toast.LENGTH_LONG).show()
             }else{
                 val payo = binding.tvPrice.text.toString().split(" ")

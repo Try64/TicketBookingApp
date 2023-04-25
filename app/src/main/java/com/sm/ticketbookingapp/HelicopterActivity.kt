@@ -42,7 +42,9 @@ class HelicopterActivity : AppCompatActivity() {
             button.setOnClickListener {
                 pay()
             }
-
+            backButton.setOnClickListener {
+                finish()
+            }
             etPerson.addTextChangedListener(object: TextWatcher{
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -67,7 +69,7 @@ class HelicopterActivity : AppCompatActivity() {
     }
     fun pay() {
 
-        if(binding.tvPrice.text.toString().trim().isEmpty() || binding.tvPrice.text.toString().trim() == "0"){
+        if(binding.tvPrice.text.toString().trim().isEmpty() || binding.tvPrice.text.toString().trim() == "0 BDT"){
             Toast.makeText(this,"Please select at least one person",Toast.LENGTH_LONG).show()
         }else{
 
