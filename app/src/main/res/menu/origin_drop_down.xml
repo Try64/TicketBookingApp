@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/chat"
-        android:title="Chattagram" />
+        android:title="Chattogram" />
 
 
     <item
@@ -21,7 +21,7 @@
         android:title="Khulna" />
     <item
         android:id="@+id/bar"
-        android:title="Barisal" />
+        android:title="Barishal" />
     <item
         android:id="@+id/syl"
         android:title="Sylhet" />

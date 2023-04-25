@@ -118,6 +118,10 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
 
 
         binding.apply {
+            etPackageName.text = title
+            etDuration.text = duration
+            etFare.text = price
+
             backButton.setOnClickListener {
                 finish()
             }

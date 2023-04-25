@@ -77,8 +77,8 @@ class HelicopterActivity : AppCompatActivity() {
                         "Dhaka" -> {
                             dr1.text = "Dhaka Helipad"
                         }
-                        "Chattagram" -> {
-                            dr1.text = "Chattagram Helipad"
+                        "Chattogram" -> {
+                            dr1.text = "Chattogram Helipad"
                         }
                         "Cumilla" -> {
                             dr1.text = "Cumilla Helipad"
@@ -89,8 +89,8 @@ class HelicopterActivity : AppCompatActivity() {
                         "Khulna" -> {
                             dr1.text = "Khulna Helipad"
                         }
-                        "Barisal" -> {
-                            dr1.text = "Barisal Helipad"
+                        "Barishal" -> {
+                            dr1.text = "Barishal Helipad"
                         }
                         "Sylhet" -> {
                             dr1.text = "Sylhet Helipad"
@@ -114,8 +114,8 @@ class HelicopterActivity : AppCompatActivity() {
                         "Dhaka" -> {
                             dr2.text = "Dhaka Helipad"
                         }
-                        "Chattagram" -> {
-                            dr2.text = "Chattagram Helipad"
+                        "Chattogram" -> {
+                            dr2.text = "Chattogram Helipad"
                         }
                         "Cumilla" -> {
                             dr2.text = "Cumilla Helipad"
@@ -126,8 +126,8 @@ class HelicopterActivity : AppCompatActivity() {
                         "Khulna" -> {
                             dr2.text = "Khulna Helipad"
                         }
-                        "Barisal" -> {
-                            dr2.text = "Barisal Helipad"
+                        "Barishal" -> {
+                            dr2.text = "Barishal Helipad"
                         }
                         "Sylhet" -> {
                             dr2.text = "Sylhet Helipad"
