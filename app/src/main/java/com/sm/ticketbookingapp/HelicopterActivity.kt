@@ -1,13 +1,16 @@
 package com.sm.ticketbookingapp
 
+import android.R
+import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import bd.com.shurjomukhi.v2.model.PaymentReq
 import bd.com.shurjomukhi.v2.model.ShurjopayConfigs
 import bd.com.shurjomukhi.v2.model.ShurjopayException
@@ -19,6 +22,7 @@ import com.sm.ticketbookingapp.databinding.CongratulationsDialogBinding
 import com.sm.ticketbookingapp.util.Util
 import com.sm.ticketbookingapp.util.Util.Companion.HelicopterPricePP
 import java.util.Random
+
 
 class HelicopterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHelicoptorBinding
@@ -38,6 +42,13 @@ class HelicopterActivity : AppCompatActivity() {
         )
 
         binding.apply {
+
+            binding.dr.setOnClickListener {
+                openDatePicker()
+            }
+            binding.dr0.setOnClickListener {
+                openTimePicker()
+            }
 
             button.setOnClickListener {
                 pay()
@@ -130,4 +141,31 @@ class HelicopterActivity : AppCompatActivity() {
         }
         dialog.show()
     }
+
+
+    private fun openDatePicker() {
+        val datePickerDialog = DatePickerDialog(this,
+            { datePicker, year, month, day -> //Showing the picked value in the textView
+                //textView.setText("$year.$month.$day")
+                binding.dr.text = "$year.${month+1}.$day"
+                Toast.makeText(this@HelicopterActivity,"$year.${month+1}.$day",Toast.LENGTH_LONG).show()
+            }, 2023, 3, 25
+        )
+        datePickerDialog.show()
+    }
+
+
+    private fun openTimePicker() {
+        val timePickerDialog = TimePickerDialog(this,
+            { timePicker, hour, minute -> //Showing the picked value in the textView
+                //textView.setText("$hour:$minute")
+                binding.dr0.text = "$hour:$minute"
+                Toast.makeText(this@HelicopterActivity,"$hour:$minute",Toast.LENGTH_LONG).show()
+            }, 15, 30, false
+        )
+        timePickerDialog.show()
+    }
+
+
+
 }
