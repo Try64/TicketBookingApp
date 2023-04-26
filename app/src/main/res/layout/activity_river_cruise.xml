@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/image_dummy" />
+                    android:src="@drawable/sm_sundarban" />
             </LinearLayout>
 
             <TextView
@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/image_dummy" />
+                    android:src="@drawable/sm_barishal" />
             </LinearLayout>
 
             <TextView
@@ -255,8 +255,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/image_dummy" />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/sm_chadpur" />
             </LinearLayout>
 
             <TextView

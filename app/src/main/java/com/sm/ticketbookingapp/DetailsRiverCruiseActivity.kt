@@ -15,6 +15,7 @@ import bd.com.shurjomukhi.v2.model.ShurjopayException
 import bd.com.shurjomukhi.v2.model.ShurjopaySuccess
 import bd.com.shurjomukhi.v2.payment.PaymentResultListener
 import bd.com.shurjomukhi.v2.payment.Shurjopay
+import coil.load
 import com.sm.ticketbookingapp.databinding.ActivityDetailsRiverCruiseBinding
 import com.sm.ticketbookingapp.databinding.CongratulationsDialogBinding
 import com.sm.ticketbookingapp.databinding.InfoDialogBinding
@@ -121,6 +122,14 @@ class DetailsRiverCruiseActivity : AppCompatActivity() {
             etPackageName.text = title
             etDuration.text = duration
             etFare.text = price
+
+            if(title == "Trip to Chandpur"){
+                banner.load(R.drawable.sm_chadpur)
+            }else if(title == "Trip to the Sundarbans"){
+                banner.load(R.drawable.sm_sundarban)
+            }else{
+                banner.load(R.drawable.sm_barishal)
+            }
 
             backButton.setOnClickListener {
                 finish()
